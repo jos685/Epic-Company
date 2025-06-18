@@ -4,7 +4,11 @@ import { motion } from 'framer-motion'
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 px-6 bg-500">
+<<<<<<< HEAD
+    <section id="contact" className="py-24 px-6 bg-50">
+=======
+    <section id="contact" className="py-24 px-6 bg-gray-50 text-gray-800">
+>>>>>>> 5dc3376 (Intialized the project to github after setting up everything)
       <div className="max-w-4xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-8">Get in Touch</h2>
         <motion.form
