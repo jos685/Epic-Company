@@ -3,19 +3,19 @@
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { name: 'Home', href: '#' },
   { name: 'About', href: '#about' },
   { name: 'Services', href: '#services' },
-  { name: 'Portfolio', href: '#portfolio' },
-  { name: 'Testimonials', href: '#testimonials' },
   { name: 'Contact', href: '#contact' },
 ]
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState<string>('')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
 
   useEffect(() => {
     const sectionIds = navLinks.map(link => link.href.replace('#', ''))
@@ -38,6 +38,10 @@ export default function Navbar() {
     return () => observer.disconnect()
   }, [])
 
+  const toggleMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
   return (
     <motion.nav
       initial={{ y: -50, opacity: 0 }}
@@ -49,6 +53,8 @@ export default function Navbar() {
         <Link href="/" className="text-white font-bold text-xl tracking-wide">
           Epic Softwares
         </Link>
+
+        {/* Desktop Menu */}
         <div className="space-x-6 hidden md:flex">
           {navLinks.map((link) => {
             const id = link.href.replace('#', '')
@@ -66,7 +72,43 @@ export default function Navbar() {
             )
           })}
         </div>
+
+        {/* Mobile Hamburger Button */}
+        <button onClick={toggleMenu} className="md:hidden text-white">
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden bg-black bg-opacity-95 px-6 pb-4"
+          >
+            <div className="flex flex-col space-y-4">
+              {navLinks.map((link) => {
+                const id = link.href.replace('#', '')
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)} // close on link click
+                    className={classNames(
+                      'text-white font-medium transition-colors',
+                      activeSection === id ? 'text-white' : 'text-gray-400 hover:text-white'
+                    )}
+                  >
+                    {link.name}
+                  </a>
+                )
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   )
 }
