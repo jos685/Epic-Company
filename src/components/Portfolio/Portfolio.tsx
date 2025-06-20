@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const projects = [
   {
@@ -43,7 +44,8 @@ export default function Portfolio() {
             viewport={{ once: true }}
             className="relative group rounded-lg overflow-hidden shadow-lg"
           >
-            <img src={project.image} alt={project.title} className="w-full h-60 object-cover" />
+            <Image  src={project.image} alt={project.title} className="w-full h-60 object-cover"  width={200}
+           height={40} />
             <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-lg font-semibold">
               {project.title}
             </div>
