@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import React, { useRef, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 
 const Contact: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
