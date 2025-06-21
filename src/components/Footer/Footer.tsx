@@ -29,7 +29,7 @@ export default function Footer() {
 
       {/* Footer Text */}
       <p className="text-sm text-gray-500 dark:text-gray-400">
-        © {new Date().getFullYear()} YourCompany. All rights reserved.
+        © {new Date().getFullYear()} Epic Softwares. All rights reserved.
       </p>
     </footer>
   );
