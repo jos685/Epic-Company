@@ -25,25 +25,29 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ reply: chat.choices[0].message.content });
-
-  } catch (error: any) {
-    console.error('Epic AI error:', error);
-
-    // Specific handling for OpenAI quota exceeded (429)
-    if (error.status === 429 || error.code === 'insufficient_quota') {
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('Epic AI error:', error.message);
+    } else {
+      console.error('Epic AI unknown error:', error);
+    }
+  
+    // Optionally cast if you know what error format to expect
+    const err = error as { status?: number; code?: string };
+  
+    if (err.status === 429 || err.code === 'insufficient_quota') {
       return NextResponse.json({
         reply: "Epic AI is temporarily unavailable due to usage limits. Please try again later or contact support."
       }, { status: 429 });
     }
-
-    // Optional: development fallback
+  
     if (process.env.NODE_ENV === 'development') {
       return NextResponse.json({ reply: "Mock response: This is a dev environment fallback." });
     }
-
+  
     return NextResponse.json(
       { error: 'Something went wrong with Epic AI.' },
       { status: 500 }
     );
   }
-}
+}  
