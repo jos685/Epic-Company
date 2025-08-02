@@ -12,8 +12,8 @@ const team = [
     tagline: '"Engineering ideas into real world impact."',
   },
   {
-    name: 'Jane Kimani',
-    role: 'UI/UX Designer',
+    name: 'Salathiel Jechonias',
+    role: 'Robotics & AI Specialist',
     icon: <PenTool className="inline-block w-4 h-4 mr-1 text-pink-500" />,
     desc: 'Designs user-first experiences with attention to detail and modern design trends.',
     tagline: '"Designs that don’t just look good — they feel right."',
@@ -28,9 +28,11 @@ const team = [
 ]
 
 const timeline = [
-  { year: '2022', event: 'Epic Solutions Founded' },
-  { year: '2023', event: 'Launched 10+ Client Projects' },
-  { year: '2024', event: 'Expanded into Mobile & Cloud Development' },
+  { year: '2021', event: 'Epic Solutions Founded' },
+  { year: '2022', event: 'Launched 20+ Client Projects' },
+  { year: '2023', event: 'Expanded Team to 10+ Experts' },
+  { year: '2024', event: 'Introduced AI & Automation Services' },
+  { year: '2024', event: 'Achieved 95% Client Satisfaction Rate' },
 ]
 
 export default function About() {

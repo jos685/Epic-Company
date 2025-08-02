@@ -12,9 +12,8 @@ export default function Home() {
     <div>
       <Navbar/>
       <Hero />
-      <About/>
       <Services/>
-     
+      <About/>
       <Contact/>
       <Footer/>
       <ThemeToggle/>

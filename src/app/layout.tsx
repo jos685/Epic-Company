@@ -1,17 +1,19 @@
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 import Script from 'next/script';
+import EpicAIWidget from "@/components/EpicAIWidget/EpicAIWidget";
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
+        {/* Google Analytics Script */}
         <Script
-          strategy="afterInteractive"
+          async
           src="https://www.googletagmanager.com/gtag/js?id=G-T9489C6B1J"
         />
         <Script
@@ -30,6 +32,7 @@ export default function RootLayout({
       <body>
         {children}
         <Toaster position="top-right" />
+        <EpicAIWidget/>
       </body>
     </html>
   );

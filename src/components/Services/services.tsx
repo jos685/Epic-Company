@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import {
+  Bot,
   Code,
   Paintbrush,
   ServerCog,
@@ -15,6 +16,13 @@ import {
 } from 'lucide-react'
 
 const services = [
+  {
+    title: 'AI Agents & Automation',
+    description:
+      'We deploy intelligent AI agents to optimize operations, automate complex workflows, and drive business efficiency at scale.',
+    icon: <Bot size={40} className="text-blue-600" />,
+  },
+  
   {
     title: 'Web Development',
     description:
