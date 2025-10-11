@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import React, { useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { 
@@ -58,20 +57,26 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const sendEmail = (e: React.FormEvent) => {
+  const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
 
-    if (form.current) {
-      emailjs.sendForm(
-        'service_pfgetgo',
-        'template_etywp1v',
-        form.current,
-        'ZevJhQLmgRc0W-eel'
-      )
-      .then(() => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const result = await response.json();
+
+      if (response.ok) {
         setStatus('sent');
-        toast.success('Message sent successfully! We&apos;ll get back to you within 24 hours.');
+        toast.success('Message sent successfully! We shall get back to you within 24 hours.');
+
+        // Reset form
         form.current?.reset();
         setFormData({
           name: '',
@@ -82,12 +87,20 @@ const Contact: React.FC = () => {
           budget: '',
           message: ''
         });
-      })
-      .catch((error) => {
-        console.error(error.text);
+      } else {
         setStatus('error');
-        toast.error('Failed to send message. Please try again or contact us directly.');
-      });
+        
+        // Handle rate limit errors specifically
+        if (response.status === 429) {
+          toast.error('Too many requests. Please try again in 15 minutes.');
+        } else {
+          toast.error(result.error || 'Failed to send message. Please try again.');
+        }
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('error');
+      toast.error('Network error. Please try again or contact us directly.');
     }
   };
 
