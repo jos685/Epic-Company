@@ -7,11 +7,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { name: 'Home', href: '#' },
-  { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Contact', href: '#contact' },
-  { name: 'Blogs', href: '/blogs' },
+  { name: 'HOME', href: '#' },
+  { name: 'SERVICES', href: '#services' },
+  { name: 'PROJECTS', href: '#projects' },
+  { name: 'CONTACT', href: '#contact' },
+
 ]
 
 export default function Navbar() {
@@ -51,8 +51,8 @@ export default function Navbar() {
       className="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-90 shadow-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-        <Link href="/" className="text-white font-bold text-xl tracking-wide">
-          Epic Softwares
+        <Link href="/" className="text-green font-bold text-xl tracking-wide">
+          EPIC SOFTWARES.SHOP
         </Link>
 
         {/* Desktop Menu */}

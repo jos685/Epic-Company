@@ -1,5 +1,7 @@
 'use client';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import debounce from 'lodash/debounce'; 
+
 
 export default function EpicAISidePanel() {
   const [open, setOpen] = useState(false);
@@ -17,17 +19,38 @@ export default function EpicAISidePanel() {
     'How long does development take?',
   ];
 
-  async function handleAsk() {
+  // Debounced API call
+  const debouncedAsk = useCallback(
+    debounce(async (question: string) => {
+      if (!question.trim()) {
+        setResponse('Please enter a valid question.');
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: question }),
+        });
+
+        const data = await res.json();
+        setResponse(data.reply || 'No response from AI.');
+      } catch (err) {
+        console.error('AI Error:', err);
+        setResponse('Something went wrong. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    }, 1000),
+    [] // Ensures debounce is created once
+  );
+
+  const handleAsk = () => {
     setLoading(true);
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt }),
-    });
-    const data = await res.json();
-    setResponse(data.reply);
-    setLoading(false);
-  }
+    debouncedAsk(prompt);
+  };
 
   return (
     <>
@@ -63,7 +86,7 @@ export default function EpicAISidePanel() {
           <button
             onClick={handleAsk}
             className="bg-green-700 text-white py-2 rounded disabled:opacity-60"
-            disabled={loading}
+            disabled={loading || !prompt.trim()}
           >
             {loading ? 'Thinking...' : 'Generate'}
           </button>
@@ -81,7 +104,10 @@ export default function EpicAISidePanel() {
               {suggestedQuestions.map((q, i) => (
                 <button
                   key={i}
-                  onClick={() => setPrompt(q)}
+                  onClick={() => {
+                    setPrompt(q);
+                    setResponse('');
+                  }}
                   className="bg-gray-200 text-sm px-3 py-1 rounded hover:bg-gray-300"
                 >
                   {q}

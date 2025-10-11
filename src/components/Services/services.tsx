@@ -24,21 +24,21 @@ const services = [
   },
   
   {
-    title: 'Web Development',
+    title: 'Web and Mobile App Development',
     description:
       'We build fast, secure, responsive websites using modern stacks like Next.js, Laravel, Django, and Node.js.',
     icon: <Code size={40} className="text-blue-600" />,
   },
   {
-    title: 'UI/UX Design',
+    title: 'Graphic Design',
     description:
       'Crafting beautiful and intuitive designs using Figma, Tailwind CSS, and clean user-centered interfaces.',
     icon: <Paintbrush size={40} className="text-pink-500" />,
   },
   {
-    title: 'Cloud & DevOps',
+    title: 'SEO Optimization',
     description:
-      'Scalable deployments with AWS, Docker, Vercel, CI/CD pipelines, and cloud-native architecture.',
+      'Design your existing website to be ranked on top by google on their serach engines.',
     icon: <ServerCog size={40} className="text-green-600" />,
   },
   {
