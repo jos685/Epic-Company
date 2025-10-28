@@ -2,6 +2,14 @@ import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 import Script from 'next/script';
 import EpicAIWidget from "@/components/EpicAIWidget/EpicAIWidget";
+import type { Metadata } from 'next'
+import OrganizationSchema from '@/components/StructuredData/OrganizationSchema';
+
+export const metadata: Metadata = {
+  title: 'EpicAI - AI Solutions for Small Businesses',
+  description:  'Cut operational costs by 30% with our AI tools. Easy setup, no technical skills needed. Start your free trial today.',
+  keywords: 'AI tools, small business automation, website, productivity software',
+}
 
 export default function RootLayout({
   children,
@@ -31,6 +39,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <OrganizationSchema/>
         <Toaster position="top-right" />
         <EpicAIWidget/>
       </body>
