@@ -12,7 +12,7 @@ export default function EpicAISidePanel() {
     {
       question: 'price',
       keywords: ['price', 'cost', 'how much', 'pricing', 'fee', 'rate', 'charges'],
-      answer: 'Our pricing varies by project:\n• Basic website: Ksh3000 - Ksh8000\n• E-commerce site: Ksh4000 - Ksh8,500\n• Mobile app: Ksh5,0000 - Ksh10,000\n• AI solutions: Ksh15000 - Ksh30,000\n• Custom projects: Get a free quote\n\nAll prices include 3 months of free support!'
+      answer: 'Our pricing varies by project:\n• Basic website: Ksh6000 - Ksh10000\n• E-commerce site: Ksh8,500 - Ksh25,500\n• Mobile app: Ksh10,0000 - Ksh30,000\n• AI solutions: Ksh15000 - Ksh30,000\n• Custom projects: Get a free quote\n\nAll prices include 3 months of free support!'
     },
     {
       question: 'hosting',
@@ -52,7 +52,7 @@ export default function EpicAISidePanel() {
     {
       question: 'ai solutions',
       keywords: ['ai', 'artificial intelligence', 'machine learning', 'automation', 'chatbot'],
-      answer: 'Our AI services include:\n• Custom AI chatbots & virtual assistants\n• Business process automation\n• Predictive analytics\n• Computer vision solutions\n• Natural language processing\n• AI-powered customer service\n• Starting at $500'
+      answer: 'Our AI services include:\n• Custom AI chatbots & virtual assistants\n• Business process automation\n• Predictive analytics\n• Computer vision solutions\n• Natural language processing\n• AI-powered customer service\n• Starting at Ksh40,000'
     },
     {
       question: 'seo',
@@ -62,7 +62,7 @@ export default function EpicAISidePanel() {
     {
       question: 'support',
       keywords: ['support', 'maintenance', 'updates', 'help', 'bugs'],
-      answer: 'We provide comprehensive support:\n• 3 months FREE support on all projects\n• 24/7 emergency bug fixes\n• Regular security updates\n• Performance monitoring\n• Content updates available\n• Hosting management\n• Extended support plans from $50/month'
+      answer: 'We provide comprehensive support:\n• 3 months FREE support on all projects\n• 24/7 emergency bug fixes\n• Regular security updates\n• Performance monitoring\n• Content updates available\n• Hosting management\n• Extended support plans from Ksh2,000/month'
     },
     {
       question: 'portfolio',
