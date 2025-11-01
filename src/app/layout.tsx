@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 import OrganizationSchema from '@/components/StructuredData/OrganizationSchema';
 import Navbar from '@/components/NavBar/NavBar';
 import Footer from '@/components/Footer/Footer';
+import WhatsAppButton from "@/components/Whatsapp/WhatsAppButton";
 
 export const metadata: Metadata = {
   title: 'EpicAI - AI Solutions for Businesses',
@@ -46,6 +47,7 @@ export default function RootLayout({
         <OrganizationSchema/>
         <Toaster position="top-right" />
         <EpicAIWidget/>
+        <WhatsAppButton/>
         <Footer/>
       </body>
     </html>

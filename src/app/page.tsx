@@ -3,7 +3,6 @@ import Hero from '@/components/HeroSection/HeroSection';
 import type { Metadata } from 'next'
 import Services from '@/components/Services/services';
 import Contact from '@/components/Contact/Contact';
-import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 import Project from "@/components/Projects/Projects"
 
 export const metadata: Metadata = {
@@ -74,8 +73,6 @@ export default function Home() {
         <Services/>
         <Project/>
         <Contact/>
-        
-        <ThemeToggle/>
       </main>
     </>
   );

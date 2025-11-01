@@ -293,7 +293,7 @@ export default function Hero() {
           transition={{ delay: 0.8, duration: 0.8 }}
         >
           {[
-            { icon: "✅", text: "No Coding Required" },
+            { icon: "✅", text: "Increase your Market" },
             { icon: "⚡", text: "Setup in 48 Hours" },
             { icon: "💰", text: "30-Day Money Back" }
           ].map((item, index) => (
