@@ -4,9 +4,11 @@ import Script from 'next/script';
 import EpicAIWidget from "@/components/EpicAIWidget/EpicAIWidget";
 import type { Metadata } from 'next'
 import OrganizationSchema from '@/components/StructuredData/OrganizationSchema';
+import Navbar from '@/components/NavBar/NavBar';
+import Footer from '@/components/Footer/Footer';
 
 export const metadata: Metadata = {
-  title: 'EpicAI - AI Solutions for Small Businesses',
+  title: 'EpicAI - AI Solutions for Businesses',
   description:  'Cut operational costs by 30% with our AI tools. Easy setup, no technical skills needed. Start your free trial today.',
   keywords: 'AI tools, small business automation, website, productivity software',
 }
@@ -38,10 +40,13 @@ export default function RootLayout({
         />
       </head>
       <body>
+        
         {children}
+         <Navbar/>
         <OrganizationSchema/>
         <Toaster position="top-right" />
         <EpicAIWidget/>
+        <Footer/>
       </body>
     </html>
   );

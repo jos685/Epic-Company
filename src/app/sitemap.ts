@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8, // High priority since it's a service page
     },
     {
+      url: `${baseUrl}/blog`, 
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8, // High priority since it's a service page
+    },
+    {
       url: `${baseUrl}/#services`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
